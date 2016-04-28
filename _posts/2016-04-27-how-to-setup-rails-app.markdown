@@ -4,7 +4,11 @@ permalink: /:title
 title:  "How to create a rails app"
 date:   2016-04-27 17:38:34 +0800
 categories: jekyll update
+excerpt_separator: <!--more-->
 ---
+
+This blog is going to show you how to create a new rails app from scratch.
+<!--more-->
 
 ## Prerequisite
 1) Install rvm
@@ -29,30 +33,27 @@ categories: jekyll update
 
 5) Install qt5(optional)
 
-Install this if you want to use capybara. 
-
+> Install this if you want to use capybara. 
 Reference: [https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit#debian-testing-unstable-stable-wheezy-ubuntu](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit#debian-testing-unstable-stable-wheezy-ubuntu)
 
 	sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
 
 6) Install imagemagick(optional)
 
-Install this if you want to use imagemagick 
-
-Reference: [https://help.ubuntu.com/community/ImageMagick](https://help.ubuntu.com/community/ImageMagick)
+> Install this if you want to use imagemagick. Reference: [https://help.ubuntu.com/community/ImageMagick](https://help.ubuntu.com/community/ImageMagick)
 
 	sudo apt-get update
 	sudo apt-get install imagemagick --fix-missing
 
 7) Install postgresql(optional)
 
-Install this if you want to use Postgresql as your app database
+> Install this if you want to use Postgresql as your app database
 
 	sudo apt-get update
 	sudo apt-get install postgresql postgresql-contrib
 	sudo apt-get install libpq-dev (important for pg gem)
 
-Create a user with superuser access for your postgresql
+8) Create a user with superuser access for your postgresql(optional)
 
 	sudo -u postgres createuser username -s
 
@@ -89,14 +90,14 @@ Add following gems to 'Gemfile'
 	  gem 'capybara-webkit'
 	end
 
-Then, in the terminal bundle install and initialize rspec and guard
+5) In the terminal bundle install and initialize rspec and guard
 
 	bundle install
 	rails generate rspec:install
 	guard init rspec
 	guard init puma
 
-Place the Shoulda Matcher configuration in `spec/rails_helper.rb`:
+6) Place the Shoulda Matcher configuration in `spec/rails_helper.rb`:
 
 	Shoulda::Matchers.configure do |config|
 	  config.integrate do |with|
@@ -105,7 +106,7 @@ Place the Shoulda Matcher configuration in `spec/rails_helper.rb`:
 	  end
 	end
 
-Add this line to `spec/test_helper.rb`:
+7) Add this line to `spec/test_helper.rb`:
 
 	require 'capybara/rails'
 
