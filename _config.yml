@@ -18,3 +18,5 @@ github_username:  peiyee
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+port: 4000

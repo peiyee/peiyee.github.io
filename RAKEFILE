@@ -1,0 +1,25 @@
+require 'Date'
+
+desc 'Generate New Post'
+task :post do
+  title = ENV["title"]
+  filename = "#{Date.today}-#{title}.markdown"
+  file = File.join(File.dirname(__FILE__),"_posts","#{filename}")
+  type = <<-EOS
+---
+layout: post
+permalink: /:title
+title:  \"#{title.gsub("-", " ")}\"
+date:   #{Date.today}
+categories: jekyll update
+excerpt_separator: <!--more-->
+---
+    EOS
+  if File.exist?(file) 
+    puts "Post already there!!!"
+  else
+    File.open(file, "w") do |f|
+      f.write(type)
+    end
+  end
+end
