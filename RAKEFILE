@@ -3,13 +3,13 @@ require 'Date'
 desc 'Generate New Post'
 task :post do
   title = ENV["title"]
-  filename = "#{Date.today}-#{title}.markdown"
+  filename = "#{Date.today}-#{title.gsub(' ','-')}.markdown"
   file = File.join(File.dirname(__FILE__),"_posts","#{filename}")
   type = <<-EOS
 ---
 layout: post
 permalink: /:title
-title:  \"#{title.gsub("-", " ")}\"
+title:  \"#{title}\"
 date:   #{Date.today}
 categories: jekyll update
 excerpt_separator: <!--more-->
